@@ -1,17 +1,17 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "papyrus/version"
+require "papyri/version"
 
 Gem::Specification.new do |s|
-  s.name        = "papyrus"
-  s.version     = Papyrus::VERSION
+  s.name        = "papyri"
+  s.version     = Papyri::VERSION
   s.authors     = ["wilkie"]
   s.email       = ["wilkie05@gmail.com"]
   s.homepage    = ""
   s.summary     = %q{TODO: Write a gem summary}
   s.description = %q{TODO: Write a gem description}
 
-  s.rubyforge_project = "papyrus"
+  s.rubyforge_project = "papyri"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

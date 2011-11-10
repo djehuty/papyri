@@ -1,4 +1,4 @@
 source "http://rubygems.org"
 
-# Specify your gem's dependencies in papyrus.gemspec
+# Specify your gem's dependencies in papyri.gemspec
 gemspec

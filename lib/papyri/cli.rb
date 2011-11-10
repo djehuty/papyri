@@ -1,11 +1,11 @@
-require 'papyrus'
+require 'papyri'
 require 'optparse'
 
-module Papyrus
+module Papyri
   class CLI
     BANNER = <<-USAGE
     Usage:
-      papyrus generate
+      papyri generate
     USAGE
 
     class << self
