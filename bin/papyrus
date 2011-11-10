@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+$: << File.dirname(__FILE__) + '/../lib'
+
+require 'papyrus'
+require 'papyrus/cli'
+
+Papyrus::CLI.run
