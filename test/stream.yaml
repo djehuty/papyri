@@ -1,0 +1,39 @@
+module: io.stream
+class: Stream
+description: This class represents a data stream of arbitrary bytes.
+
+functions:
+  - constructor: This constructor will create a stream attached to predefined functions.
+
+  - constructor: This constructor will create an unattached stream.
+
+  - property: length
+    access: read-only
+
+  - property: available
+    access: read-only
+
+  - property: position
+    access: read-only
+
+  - event: read
+    delegate: ubyte[](size_t length)
+    description: This event is triggered when the read method is called on this stream without a supplied buffer.
+
+  - method: append
+    description: This function appends the given data...
+    parameters:
+      - type: Stream
+        name: data
+        description: The bytes to write to the end of the current stream.
+      - type: size_t
+        name: length
+        description: The number of bytes to write.
+
+  - method: read
+    description: This function will read a number of bytes from the stream at the current position. These bytes will be returned by a buffer supplied by the stream. It will be a shallow copy whenever possible.
+    parameters:
+      - type: size_t
+        name: length
+        description: The number of bytes to read.
+    returns: A filled buffer with the bytes read.
