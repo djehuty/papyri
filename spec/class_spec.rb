@@ -38,5 +38,16 @@ describe Papyri::Class do
       @cls.properties[1].name.should eql("available")
       @cls.properties[2].name.should eql("position")
     end
+
+    it "reads the dependencies from the yaml file" do
+      @cls.dependencies.length.should eql(2)
+      @cls.dependencies[0].should eql("io.foo")
+      @cls.dependencies[1].should eql("io.bar")
+    end
+
+    it "has at least an empty array if no dependencies are listed" do
+      cls = Papyri::Class.new("test/foo.yaml")
+      cls.dependencies.should eql([])
+    end
   end
 end

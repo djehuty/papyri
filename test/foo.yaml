@@ -2,8 +2,6 @@ module: io.stream
 class: Stream
 description: This class represents a data stream of arbitrary bytes.
 
-dependencies: [io.foo, io.bar]
-
 functions:
   - constructor: This constructor will create a stream attached to predefined functions.
 
