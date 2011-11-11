@@ -36,8 +36,9 @@ module Papyri
 
       @dependencies = []
       
-      unless @yaml["dependencies"].nil?
+      unless @yaml["dependencies"].nil? or not @yaml["dependencies"].is_a? Array
         @yaml["dependencies"].each do |dependency|
+          @dependencies << dependency
         end
       end
 
