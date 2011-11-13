@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %title foo
+
+  %body
+    %h1=@name
+    %h2=@module
+
+    - @constructors.each do |f|
+      %h3=f.to_s
+
+    - @methods.each do |f|
+      %h3=f.to_s
+
+    - @properties.each do |f|
+      %h3=f.to_s
+
+    - @events.each do |f|
+      %h3=f.to_s
