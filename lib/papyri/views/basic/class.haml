@@ -1,20 +1,39 @@
 !!!
 %html
   %head
-    %title foo
+    %title #{@module}.#{@name} Documentation
 
   %body
-    %h1=@name
-    %h2=@module
+    .header
+      %span{:style=>"font-size:3em"} #{@name}
+      %span{:style=>"color: #888; padding-left: 1em; font-size:2em"} #{@module}
+
+    - if @dependencies.length > 0
+      Depends on
+      %ul
+        - @dependencies.each do |d|
+          %li #{d}
 
     - @constructors.each do |f|
-      %h3=f.to_s
+      %h3 #{f}
+      .desc #{f.description}
+      - f.parameters.each do |p|
+        .param #{p.name}: #{p.description}
 
     - @methods.each do |f|
-      %h3=f.to_s
+      %h3 #{f}
+      .desc #{f.description}
+      - f.parameters.each do |p|
+        .param #{p.name}: #{p.description}
 
     - @properties.each do |f|
-      %h3=f.to_s
+      %h3 #{f}
+      .desc #{f.description}
+      - f.parameters.each do |p|
+        .param #{p.name}: #{p.description}
 
     - @events.each do |f|
-      %h3=f.to_s
+      %h3 #{f}
+      .desc #{f.description}
+      - f.parameters.each do |p|
+        .param #{p.name}: #{p.description}
