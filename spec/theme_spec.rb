@@ -24,6 +24,7 @@ describe Papyri::Theme do
       @methods = []
       @properties = []
       @events = []
+      @dependencies = []
     end
 
     it "generates HTML output" do
