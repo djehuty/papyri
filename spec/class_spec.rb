@@ -1,10 +1,24 @@
 # Class Model Specifications
 require 'papyri/models/class'
 
+require 'papyri/models/config'
+
 describe Papyri::Class do
   describe "#new" do
     before(:each) do
       @cls = Papyri::Class.new("test/stream.yaml")
+    end
+
+    it "uses the default config model for the constructor name when no config model is given" do
+      default_name = Papyri::Config.new.constructor_name
+      @cls.constructors[0].name.should eql(default_name)
+    end
+
+    it "uses the given config model for the constructor name" do
+      config = Papyri::Config.new("test/papyri_config.yaml")
+      cls = Papyri::Class.new("test/stream.yaml", config)
+      constructor_name = config.constructor_name
+      cls.constructors[0].name.should eql(constructor_name)
     end
 
     it "reads the class name from the yaml file" do
@@ -17,8 +31,8 @@ describe Papyri::Class do
 
     it "reads the constructors from the yaml file" do
       @cls.constructors.length.should eql(2)
-      @cls.constructors[0].description.should eql("This constructor will create a stream attached to predefined functions.")
-      @cls.constructors[1].description.should eql("This constructor will create an unattached stream.")
+      @cls.constructors[0].description.should eql("This constructor will create an unattached stream.")
+      @cls.constructors[1].description.should eql("This constructor will create a stream attached to predefined functions.")
     end
 
     it "reads the events from the yaml file" do
