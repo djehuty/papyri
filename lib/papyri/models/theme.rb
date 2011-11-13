@@ -7,8 +7,12 @@ module Papyri
       end
     end
 
-    def generate cls
+    def generate_class cls
       Tilt::HamlTemplate.new("lib/papyri/views/#{@theme_name}/class.haml", 1, {:format => :html5}).render cls
+    end
+
+    def generate_navigation project
+      Tilt::HamlTemplate.new("lib/papyri/views/#{@theme_name}/navigation.haml", 1, {:format => :html5}).render project
     end
   end
 end

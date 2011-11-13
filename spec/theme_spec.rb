@@ -14,7 +14,7 @@ describe Papyri::Theme do
 
   end
 
-  describe "#generate" do
+  describe "#generate_class" do
     before(:each) do
       @theme = Papyri::Theme.new "basic"
 
@@ -28,12 +28,36 @@ describe Papyri::Theme do
     end
 
     it "generates HTML output" do
-      output = @theme.generate self
+      output = @theme.generate_class self
       output.should match /<HTML.*?>/i
     end
 
     it "generates HTML5 output" do
-      output = @theme.generate self
+      output = @theme.generate_class self
+      output.should match /<!DOCTYPE html>/i
+    end
+  end
+
+  describe "#generate_navigation" do
+    before(:each) do
+      @theme = Papyri::Theme.new "basic"
+
+      @classes = []
+      model_a = Papyri::Class.new("test/stream.yaml")
+      @classes << {:model => model_a, 
+        :filename => "stream.html"}
+      model_b = Papyri::Class.new("test/foo.yaml")
+      @classes << {:model => model_b,
+        :filename => "foo.html"}
+    end
+
+    it "generates HTML output" do
+      output = @theme.generate_navigation self
+      output.should match /<HTML.*?>/i
+    end
+
+    it "generates HTML5 output" do
+      output = @theme.generate_navigation self
       output.should match /<!DOCTYPE html>/i
     end
   end
