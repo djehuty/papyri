@@ -1,0 +1,3 @@
+language: D
+constructor_name: this
+function_format: "%n(%t %p, %t %p)"
