@@ -5,9 +5,13 @@ description: This class represents a data stream of arbitrary bytes.
 dependencies: [io.foo, io.bar]
 
 functions:
-  - constructor: This constructor will create a stream attached to predefined functions.
-
   - constructor: This constructor will create an unattached stream.
+
+  - constructor: This constructor will create a stream attached to predefined functions.
+    parameters:
+      - type: ubyte[] function(size_t length)
+        name: read_function
+        description: The delegate to be called for a read operation.
 
   - property: length
     access: read-only
