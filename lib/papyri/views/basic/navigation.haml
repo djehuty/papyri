@@ -1,0 +1,10 @@
+!!!
+%html
+  %head
+    %title Project
+
+  %body
+    %ul
+      - @classes.each do |cls|
+        %li
+          %a{:href=>cls[:filename], :alt=>cls[:model].name} #{cls[:model].name}
