@@ -3,11 +3,15 @@
   %head
     %title Project - Documentation
   %body
+    %h3 Welcome to the Documentation
+
+    %h2 Modules
     %ul
       - @modules.each do |m|
         %li
           %a{:href=>m[:filename], :alt=>m[:model].name} #{m[:model].name}
 
+    %h2 Classes
     %ul
       - @classes.each do |c|
         %li
