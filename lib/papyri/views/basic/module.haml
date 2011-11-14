@@ -3,6 +3,11 @@
   %head
     %title Module #{@name} - Documentation
   %body
+    - if @parent.is_a? Papyri::Project
+      %a{:href=>@parent_filename, :alt=>"Go Up"}Go to root...
+    - else
+      %a{:href=>@parent_filename, :alt=>"Go Up"}Go to #{@parent.name}...
+
     - if @modules.length > 0
       %h2 Modules
       %ul
