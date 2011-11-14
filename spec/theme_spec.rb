@@ -38,6 +38,32 @@ describe Papyri::Theme do
     end
   end
 
+  describe "#generate_module" do
+    before(:each) do
+      @theme = Papyri::Theme.new "basic"
+
+      @classes = []
+      model_a = Papyri::Class.new("test/stream.yaml")
+      @classes << {:model => model_a, 
+        :filename => "stream.html"}
+      model_b = Papyri::Class.new("test/foo.yaml")
+      @classes << {:model => model_b,
+        :filename => "foo.html"}
+
+      @modules = []
+    end
+
+    it "generates HTML output" do
+      output = @theme.generate_module self
+      output.should match /<HTML.*?>/i
+    end
+
+    it "generates HTML5 output" do
+      output = @theme.generate_module self
+      output.should match /<!DOCTYPE html>/i
+    end
+  end
+
   describe "#generate_project" do
     before(:each) do
       @theme = Papyri::Theme.new "basic"

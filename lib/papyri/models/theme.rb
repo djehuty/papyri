@@ -11,6 +11,10 @@ module Papyri
       Tilt::HamlTemplate.new("lib/papyri/views/#{@theme_name}/class.haml", 1, {:format => :html5}).render cls
     end
 
+    def generate_module mod
+      Tilt::HamlTemplate.new("lib/papyri/views/#{@theme_name}/module.haml", 1, {:format => :html5}).render mod
+    end
+
     def generate_project project
       Tilt::HamlTemplate.new("lib/papyri/views/#{@theme_name}/project.haml", 1, {:format => :html5}).render project
     end
