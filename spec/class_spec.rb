@@ -16,7 +16,7 @@ describe Papyri::Class do
 
     it "uses the given config model for the constructor name" do
       config = Papyri::Config.new("test/papyri_config.yaml")
-      cls = Papyri::Class.new("test/stream.yaml", config)
+      cls = Papyri::Class.new("test/stream.yaml", {}, config)
       constructor_name = config.constructor_name
       cls.constructors[0].name.should eql(constructor_name)
     end

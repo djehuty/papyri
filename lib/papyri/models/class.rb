@@ -15,10 +15,16 @@ module Papyri
     attr_reader :name
     attr_reader :module
 
+    attr_reader :parent
+    attr_reader :parent_filename
+
     attr_reader :dependencies
 
-    def initialize filename, config=nil
+    def initialize filename, parent={}, config=nil
       @filename = filename
+
+      @parent = parent[:model]
+      @parent_filename = parent[:filename]
       
       if config.nil?
         config = Papyri::Config.new

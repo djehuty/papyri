@@ -20,7 +20,8 @@ describe Papyri::Module do
     classes << {:model => @model_d,
       :filename => "foo.html"}
 
-    @module = Papyri::Module.new "io", classes
+    @model_p = Papyri::Module.new("gui", {})
+    @module = Papyri::Module.new("io", {:model => @model_p, :filename => "moo.html"}, classes)
   end
 
   describe "#new" do
@@ -29,10 +30,18 @@ describe Papyri::Module do
     end
 
     it "should allow creation without a module list" do
-      mod = Papyri::Module.new "io"
+      mod = Papyri::Module.new "io", {}
       mod.modules.length.should eql(0)
       mod.classes.length.should eql(0)
       mod.files.length.should eql(0)
+    end
+
+    it "should have a parent model reference" do
+      @module.parent.should eql(@model_p)
+    end
+
+    it "should have a filename for the parent" do
+      @module.parent_filename.should eql("moo.html")
     end
   end
 

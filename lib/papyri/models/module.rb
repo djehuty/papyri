@@ -3,9 +3,13 @@ require 'papyri/models/class'
 module Papyri
   class Module
     attr_reader :name
+    attr_reader :parent
+    attr_reader :parent_filename
 
-    def initialize name, classes=nil
+    def initialize name, parent, classes=nil
       @name = name
+      @parent = parent[:model]
+      @parent_filename = parent[:filename]
 
       if classes.nil?
         classes = []

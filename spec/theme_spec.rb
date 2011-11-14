@@ -17,6 +17,8 @@ describe Papyri::Theme do
   describe "#generate_class" do
     before(:each) do
       @theme = Papyri::Theme.new "basic"
+      @parent = Papyri::Project.new
+      @parent_filename = "project.html"
 
       @name = "Stream"
       @module = "io.stream"
@@ -41,6 +43,8 @@ describe Papyri::Theme do
   describe "#generate_module" do
     before(:each) do
       @theme = Papyri::Theme.new "basic"
+      @parent = Papyri::Project.new
+      @parent_filename = "project.html"
 
       @classes = []
       model_a = Papyri::Class.new("test/stream.yaml")
