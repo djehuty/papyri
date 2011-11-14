@@ -5,23 +5,23 @@ require 'papyri/models/class'
 
 describe Papyri::Project do
   before(:each) do
-    classes = []
-    @model_a = Papyri::Class.new("test/stream.yaml")
-    classes << {:model => @model_a, 
+    modules = []
+    @model_a = Papyri::Module.new "io", {}
+    modules << {:model => @model_a, 
       :filename => "stream.html"}
-    @model_b = Papyri::Class.new("test/foo.yaml")
-    classes << {:model => @model_b,
+    @model_b = Papyri::Module.new "net", {}
+    modules << {:model => @model_b,
       :filename => "foo.html"}
 
-    @project = Papyri::Project.new classes
+    @project = Papyri::Project.new modules
   end
 
-  describe "#classes" do
+  describe "#modules" do
     it "should give the list of all models" do
-      classes = @project.classes
-      classes.include?(@model_a).should eql(true)
-      classes.include?(@model_b).should eql(true)
-      classes.length.should eql(2)
+      modules = @project.modules
+      modules.include?(@model_a).should eql(true)
+      modules.include?(@model_b).should eql(true)
+      modules.length.should eql(2)
     end
   end
   
@@ -34,15 +34,15 @@ describe Papyri::Project do
     end
   end
 
-  describe "#filename_for_class" do
+  describe "#filename_for_module" do
     it "should lookup the filename for the given class" do
-      @project.filename_for_class(@model_a).should eql("stream.html")
+      @project.filename_for_module(@model_a).should eql("stream.html")
     end
   end
 
-  describe "#class_for_filename" do
+  describe "#module_for_filename" do
     it "should lookup the class model for the given filename" do
-      @project.class_for_filename("foo.html").should eql(@model_b)
+      @project.module_for_filename("foo.html").should eql(@model_b)
     end
   end
 end
