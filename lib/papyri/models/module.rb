@@ -1,13 +1,30 @@
+require 'papyri/models/class'
+
 module Papyri
   class Module
     attr_reader :name
 
     def initialize name, classes
       @name = name
+
       if classes.nil?
         classes = []
       end
-      @classes = classes
+
+      @classes = []
+      @modules = []
+
+      classes.each do |f|
+        if f[:model].is_a? Papyri::Class
+          @classes << f
+        elsif f[:model].is_a? Papyri::Module
+          @modules << f
+        end
+      end
+    end
+
+    def modules
+      @modules.map {|a| a[:model]}
     end
 
     def classes
@@ -15,7 +32,7 @@ module Papyri
     end
 
     def files
-      @classes.map {|a| a[:filename]}
+      @classes.map {|a| a[:filename]} + @modules.map {|a| a[:filename]}
     end
 
     def filename_for_class class_model
@@ -31,6 +48,24 @@ module Papyri
        @classes.each do |c|
         if c[:filename] == filename
           return c[:model]
+        end
+      end
+      nil
+    end
+
+    def filename_for_module module_model
+      @modules.each do |m|
+        if m[:model] == module_model
+          return m[:filename]
+        end
+      end
+      nil
+    end
+
+    def module_for_filename filename
+       @modules.each do |m|
+        if m[:filename] == filename
+          return m[:model]
         end
       end
       nil

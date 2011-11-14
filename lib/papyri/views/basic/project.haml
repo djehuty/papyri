@@ -1,10 +1,14 @@
 !!!
 %html
   %head
-    %title Project
-
+    %title Project - Documentation
   %body
     %ul
-      - @classes.each do |cls|
+      - @modules.each do |m|
         %li
-          %a{:href=>cls[:filename], :alt=>cls[:model].name} #{cls[:model].name}
+          %a{:href=>m[:filename], :alt=>m[:model].name} #{m[:model].name}
+
+    %ul
+      - @classes.each do |c|
+        %li
+          %a{:href=>c[:filename], :alt=>c[:model].name} #{c[:model].name}

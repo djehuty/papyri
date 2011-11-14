@@ -49,6 +49,8 @@ describe Papyri::Theme do
       model_b = Papyri::Class.new("test/foo.yaml")
       @classes << {:model => model_b,
         :filename => "foo.html"}
+
+      @modules = []
     end
 
     it "generates HTML output" do
