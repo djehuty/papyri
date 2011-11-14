@@ -3,14 +3,16 @@
   %head
     %title Module #{@name} - Documentation
   %body
-    %h2 Modules
-    %ul
-      - @modules.each do |m|
-        %li
-          %a{:href=>m[:filename], :alt=>m[:model].name} #{m[:model].name}
+    - if @modules.length > 0
+      %h2 Modules
+      %ul
+        - @modules.each do |m|
+          %li
+            %a{:href=>m[:filename], :alt=>m[:model].name} #{m[:model].name}
 
-    %h2 Classes
-    %ul
-      - @classes.each do |c|
-        %li
-          %a{:href=>c[:filename], :alt=>c[:model].name} #{c[:model].name}
+    - if @classes.length > 0
+      %h2 Classes
+      %ul
+        - @classes.each do |c|
+          %li
+            %a{:href=>c[:filename], :alt=>c[:model].name} #{c[:model].name}
