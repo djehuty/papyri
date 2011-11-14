@@ -23,6 +23,16 @@ module Papyri
       end
     end
 
+    def add obj
+      if obj[:model].is_a? Papyri::Class
+        @classes << obj
+      elsif obj[:model].is_a? Papyri::Module
+        @modules << obj
+      else
+        nil
+      end
+    end
+
     def modules
       @modules.map {|a| a[:model]}
     end

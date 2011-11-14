@@ -23,6 +23,22 @@ describe Papyri::Project do
     @project = Papyri::Project.new modules
   end
 
+  describe "#add" do
+    it "should add to the list of classes when a Class is passed" do
+      @project.add({:model=>Papyri::Class.new("test/foo.yaml"), :filename=>"foo.html"})
+      @project.modules.length.should eql(2)
+      @project.classes.length.should eql(3)
+      @project.files.length.should eql(5)
+    end
+
+    it "should add to the list of modules when a Module is passed" do
+      @project.add({:model=>Papyri::Module.new("drawing", {}), :filename=>"drawing.html"})
+      @project.modules.length.should eql(3)
+      @project.classes.length.should eql(2)
+      @project.files.length.should eql(5)
+    end
+  end
+
   describe "#modules" do
     it "should give the list of all module models" do
       modules = @project.modules
