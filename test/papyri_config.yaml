@@ -1,3 +1,4 @@
 language: D
+module_delimiter: .
 constructor_name: this
 function_format: "%n(%t %p, %t %p)"

@@ -28,6 +28,10 @@ describe Papyri::Config do
       @cfg.constructor_name.should eql("this")
     end
 
+    it "pulls the module delimiter from the config file" do
+      @cfg.module_delimiter.should eql(".")
+    end
+
     it "has an acceptable default for function format when none is specified" do
       cfg = Papyri::Config.new
       cfg.function_format.should eql("%n(%p, %p)")
@@ -41,6 +45,11 @@ describe Papyri::Config do
     it "has an acceptable default for constructor name when none is specified" do
       cfg = Papyri::Config.new
       cfg.constructor_name.should eql("initialize")
+    end
+
+    it "has an acceptable default for module delimiter when none is specified" do
+      cfg = Papyri::Config.new
+      cfg.module_delimiter.should eql("/")
     end
   end
 end

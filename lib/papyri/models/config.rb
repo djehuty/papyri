@@ -20,6 +20,10 @@ module Papyri
       @config["language"] || "ruby"
     end
 
+    def module_delimiter
+      @config["module_delimiter"] || "/"
+    end
+
     private
 
     def load_config
