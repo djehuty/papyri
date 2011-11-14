@@ -1,6 +1,6 @@
 module Papyri
   class Project
-    def initialize modules
+    def initialize modules=nil
       if modules.nil?
         modules = []
       end

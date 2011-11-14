@@ -23,6 +23,15 @@ describe Papyri::Project do
     @project = Papyri::Project.new modules
   end
 
+  describe "#new" do
+    it "should allow for no modules initially" do
+      project = Papyri::Project.new
+      project.modules.length.should eql(0)
+      project.classes.length.should eql(0)
+      project.files.length.should eql(0)
+    end
+  end
+
   describe "#add" do
     it "should add to the list of classes when a Class is passed" do
       @project.add({:model=>Papyri::Class.new("test/foo.yaml"), :filename=>"foo.html"})
