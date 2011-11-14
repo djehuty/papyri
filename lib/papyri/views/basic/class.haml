@@ -4,6 +4,11 @@
     %title #{@module}.#{@name} Documentation
 
   %body
+    - if @parent.is_a? Papyri::Project
+      %a{:href=>@parent_filename, :alt=>"Go Up"}Go to root...
+    - else
+      %a{:href=>@parent_filename, :alt=>"Go Up"}Go to #{@parent.name}...
+
     .header
       %span{:style=>"font-size:3em"} #{@name}
       %span{:style=>"color: #888; padding-left: 1em; font-size:2em"} #{@module}
@@ -14,24 +19,28 @@
         - @dependencies.each do |d|
           %li #{d}
 
+    %h2 Constructors
     - @constructors.each do |f|
       %h3 #{f}
       .desc #{f.description}
       - f.parameters.each do |p|
         .param #{p.name}: #{p.description}
 
-    - @methods.each do |f|
-      %h3 #{f}
-      .desc #{f.description}
-      - f.parameters.each do |p|
-        .param #{p.name}: #{p.description}
-
+    %h2 Properties
     - @properties.each do |f|
       %h3 #{f}
       .desc #{f.description}
       - f.parameters.each do |p|
         .param #{p.name}: #{p.description}
 
+    %h2 Methods
+    - @methods.each do |f|
+      %h3 #{f}
+      .desc #{f.description}
+      - f.parameters.each do |p|
+        .param #{p.name}: #{p.description}
+
+    %h2 Events
     - @events.each do |f|
       %h3 #{f}
       .desc #{f.description}
