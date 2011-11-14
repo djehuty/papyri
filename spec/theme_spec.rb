@@ -38,7 +38,7 @@ describe Papyri::Theme do
     end
   end
 
-  describe "#generate_navigation" do
+  describe "#generate_project" do
     before(:each) do
       @theme = Papyri::Theme.new "basic"
 
@@ -52,12 +52,12 @@ describe Papyri::Theme do
     end
 
     it "generates HTML output" do
-      output = @theme.generate_navigation self
+      output = @theme.generate_project self
       output.should match /<HTML.*?>/i
     end
 
     it "generates HTML5 output" do
-      output = @theme.generate_navigation self
+      output = @theme.generate_project self
       output.should match /<!DOCTYPE html>/i
     end
   end
