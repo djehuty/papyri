@@ -31,11 +31,13 @@ module Papyri
                 # split mod
                 mods = mod.split(conf.module_delimiter)
                 cur_mod = project
+                cur_fn = "#{dest_path}/project.html"
 
                 mods[0..-2].each do |m|
                   found = false
                   cur_mod.modules.each do |mod|
                     if mod.name == m
+                      cur_fn = cur_mod.filename_for_module mod
                       cur_mod = mod
                       found = true
                       break
@@ -43,9 +45,15 @@ module Papyri
                   end
 
                   unless found
-                    mod = Papyri::Module.new(m)
-                    @modules << {:model=>mod, :filename=>"#{dest}/#{m}.html"}
-                    cur_mod.add({:model=>mod, :filename=>"#{dest}/#{m}.html"})
+                    if cur_mod.is_a? Papyri::Project
+                      parent_filename = cur_fn
+                    else
+                      parent_filename = "../#{cur_fn[cur_fn.rindex("/")+1..-1]}"
+                    end
+                    mod = Papyri::Module.new(m, {:model=>cur_mod, :filename=>parent_filename})
+                    cur_fn = "#{dest}/#{m}.html"
+                    @modules << {:model=>mod, :filename=> cur_fn}
+                    cur_mod.add({:model=>mod, :filename=> cur_fn})
                     cur_mod = mod
                   end
 
@@ -54,6 +62,8 @@ module Papyri
 
                 dest << "/#{filename}.html"
 
+                cls.parent = cur_mod
+                cls.parent_filename = "../#{cur_fn[cur_fn.rindex("/")+1..-1]}"
                 @classes << {:model=>cls, :filename=>dest}
                 cur_mod.add({:model=>cls, :filename=>dest})
 

@@ -15,8 +15,8 @@ module Papyri
     attr_reader :name
     attr_reader :module
 
-    attr_reader :parent
-    attr_reader :parent_filename
+    attr_accessor :parent
+    attr_accessor :parent_filename
 
     attr_reader :dependencies
 
