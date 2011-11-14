@@ -27,6 +27,13 @@ describe Papyri::Module do
     it "generates an instance with the given name" do
       @module.name.should eql("io")
     end
+
+    it "should allow creation without a module list" do
+      mod = Papyri::Module.new "io"
+      mod.modules.length.should eql(0)
+      mod.classes.length.should eql(0)
+      mod.files.length.should eql(0)
+    end
   end
 
   describe "#add" do

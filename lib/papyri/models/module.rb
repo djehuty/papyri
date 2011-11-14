@@ -4,7 +4,7 @@ module Papyri
   class Module
     attr_reader :name
 
-    def initialize name, classes
+    def initialize name, classes=nil
       @name = name
 
       if classes.nil?
