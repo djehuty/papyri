@@ -2,6 +2,8 @@
 %html
   %head
     %title Module #{@name} - Documentation
+    %link{:rel => "stylesheet", :href => path_url("assets/main.css"), :type => "text/css"}
+
   %body
     - if @parent.is_a? Papyri::Project
       %a{:href=>@parent_filename, :alt=>"Go Up"}Go to root...
@@ -13,11 +15,11 @@
       %ul
         - @modules.each do |m|
           %li
-            %a{:href=>m[:filename], :alt=>m[:model].name} #{m[:model].name}
+            %a{:href=>path_url(m[:filename]), :alt=>m[:model].name} #{m[:model].name}
 
     - if @classes.length > 0
       %h2 Classes
       %ul
         - @classes.each do |c|
           %li
-            %a{:href=>c[:filename], :alt=>c[:model].name} #{c[:model].name}
+            %a{:href=>path_url(c[:filename]), :alt=>c[:model].name} #{c[:model].name}
