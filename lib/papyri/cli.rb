@@ -5,7 +5,7 @@ module Papyri
   class CLI
     BANNER = <<-USAGE
     Usage:
-      papyri generate [path=.] [-o target-path = -o .]
+      papyri generate [path=.] [target-path=.]
 
     Examples:
       Generate documents within the current directory:
