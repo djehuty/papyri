@@ -34,6 +34,17 @@ module Papyri
       load_from_yaml
     end
 
+    def path_url path
+      ret = ""
+      cur_mod = @parent
+      until cur_mod.is_a? Papyri::Project do
+        ret << "../"
+        cur_mod = cur_mod.parent
+      end
+
+      ret << path
+    end
+
     private
 
     def load_from_yaml

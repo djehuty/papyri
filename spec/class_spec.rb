@@ -64,4 +64,14 @@ describe Papyri::Class do
       cls.dependencies.should eql([])
     end
   end
+
+  describe "#path_url" do
+    it "yields a url relative to the root" do
+      cls = Papyri::Class.new("test/stream.yaml")
+      project = Papyri::Project.new
+      cls.parent = Papyri::Module.new "io", {:model => project, :filename => "project.html"}
+
+      cls.path_url("css/main.css").should eql("../css/main.css")
+    end
+  end
 end
