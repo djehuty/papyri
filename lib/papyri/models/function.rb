@@ -7,12 +7,14 @@ module Papyri
     attr_reader :returns
     attr_reader :parameters
 
-    def initialize name, description, returns, params = []
+    def initialize name, description, returns = nil, params = []
       @name = name
       @description = description
 
-      @returns = Papyri::Parameter.new("", returns["description"],
-                                       returns["type"])
+      unless returns.nil? || returns["description"].nil?
+        @returns = Papyri::Parameter.new("", returns["description"],
+                                         returns["type"])
+      end
 
       @parameters = []
       unless params.nil?
