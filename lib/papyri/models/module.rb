@@ -84,5 +84,16 @@ module Papyri
       end
       nil
     end
+
+    def path_url path
+      ret = ""
+      cur_mod = @parent
+      until cur_mod.is_a? Papyri::Project do
+        ret << "../"
+        cur_mod = cur_mod.parent
+      end
+
+      ret << path
+    end
   end
 end

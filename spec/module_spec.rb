@@ -111,4 +111,14 @@ describe Papyri::Module do
       @module.module_for_filename("foo.html").should eql(@model_b)
     end
   end
+
+  describe "#path_url" do
+    it "yields a url relative to the root" do
+      project = Papyri::Project.new
+      mod2 = Papyri::Module.new("io", {:model => project, :filename => "project.html"})
+      mod = Papyri::Module.new("test/stream.yaml", {:model => mod2, :filename => "mod2.html"})
+
+      mod.path_url("css/main.css").should eql("../css/main.css")
+    end
+  end
 end
