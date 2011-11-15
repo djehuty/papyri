@@ -1,20 +1,77 @@
 @import "reset"
 
+@mixin rounded($side, $radius: 10px)
+  border-#{$side}-radius: $radius
+  -moz-border-radius-#{$side}: $radius
+  -webkit-border-#{$side}-radius: $radius
+
 body
-  background-color: #ddd
+  background-color: #ebebeb
   font-size: 16px
   font-family: serif, times
   margin:
-    left: 30px
+    left: 20px
     right: 30px
-    top: 0px
+    top: 10px
     bottom: 0px
 
-.desc
+h1
+  margin-bottom: 15px
+  border-bottom: 1px solid #000
+  padding-left: 5px
+  font-size: 2em
+
+h1 span.module
+  font-size: 0.6em
+  color: #888
+
+h2
+  margin-left: 15px
+  margin-bottom: 9px
+  font-size: 1.00em
+
+h2 span
+  border-bottom: 1px solid #000
+
+h2:first-letter
+  font-size: 1.25em
+
+li
+  font-family: "Helvetica", "Verdana", "Ariel", sans-serif
+  font-size: 0.7em
+  list-style: square
+  margin-left: 35px
+  margin-top: 3px
+
+li a
+  font-size: 1.2em
+
+li span.name
+  font-size: 1.3em
+  background-color: #bbf
+  color: #eee
+  padding: 3px
+  @include rounded(topleft, 5px)
+  @include rounded(topright, 5px)
+  @include rounded(bottomleft, 5px)
+  @include rounded(bottomright, 5px)
+
+li .param
+  font-size: 1.2em
   margin-left: 20px
 
-.param
+li .desc
+  font-size: 1.2em
   margin-left: 20px
+  margin-top: 6px
+  margin-bottom: 3px
+
+ul
+  margin-bottom: 20px
+
+li.function
+  list-style: none
+  margin-bottom: 5px
 
 a[href]
   color: SteelBlue

@@ -5,17 +5,17 @@
     %link{:rel => "stylesheet", :href => path_url("assets/main.css"), :type => "text/css"}
 
   %body
-    %h3 Welcome to the Documentation
+    %h1 Welcome to the Documentation
 
     - if @modules.length > 0
-      %h2 Modules
+      %h2 MODULES
       %ul
         - @modules.each do |m|
           %li
             %a{:href=>m[:filename], :alt=>m[:model].name} #{m[:model].name}
 
     - if @classes.length > 0
-      %h2 Classes
+      %h2 CLASSES
       %ul
         - @classes.each do |c|
           %li
