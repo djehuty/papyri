@@ -98,4 +98,10 @@ describe Papyri::Project do
       @project.class_for_filename("foo.html").should eql(@model_d)
     end
   end
+
+  describe "#path_url" do
+    it "should simply return the input" do
+      @project.path_url("assets/main.css").should eql("assets/main.css")
+    end
+  end
 end

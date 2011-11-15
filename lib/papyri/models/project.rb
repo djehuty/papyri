@@ -74,5 +74,9 @@ module Papyri
       end
       nil
     end
+
+    def path_url path
+      path
+    end
   end
 end
