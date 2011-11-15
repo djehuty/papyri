@@ -4,10 +4,14 @@ require 'papyri/models/function'
 describe Papyri::Function do
   describe "#new" do
     before(:each) do
-      @f = Papyri::Function.new "foobar", "Does a foo bar", [
+      @f = Papyri::Function.new "foobar", "Does a foo bar", {"description" => "Returns a thing"}, [
         {"name"=>"a", "description"=>"does a thing"},
         {"name"=>"b", "description"=>"does something else"}
       ]
+    end
+
+    it "generates an instance with the specified return description" do
+      @f.returns.description.should eql("Returns a thing")
     end
 
     it "generates an instance with the specified name" do
@@ -23,12 +27,12 @@ describe Papyri::Function do
     end
 
     it "generates an instance with the parameters as an empty array if none are specified" do
-      f = Papyri::Function.new "foobar", "Does a foo bar"
+      f = Papyri::Function.new "foobar", "Does a foo bar", {}
       f.parameters.should eql([])
     end
 
     it "generates an instance with no parameters if an empty array is specified" do
-      f = Papyri::Function.new "foobar", "Does a foo bar", []
+      f = Papyri::Function.new "foobar", "Does a foo bar", {}, []
       f.parameters.should eql([])
     end
   end

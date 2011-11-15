@@ -71,21 +71,25 @@ module Papyri
           if function["property"]
             f = Papyri::Function.new function["property"], 
                                      function["description"],
+                                     {},
                                      function["parameters"]
             @properties << f
           elsif function["method"]
             f = Papyri::Function.new function["method"], 
                                      function["description"],
+                                     {"description"=>function["returns"], "type"=>function["return-type"]},
                                      function["parameters"]
             @methods << f
           elsif function["event"]
             f = Papyri::Function.new function["event"], 
                                      function["description"],
+                                     {"description"=>function["returns"], "type"=>function["return-type"]},
                                      function["parameters"]
             @events << f
           elsif function["constructor"]
             f = Papyri::Function.new @config.constructor_name, 
                                      function["constructor"],
+                                     {},
                                      function["parameters"]
             @constructors << f
           end

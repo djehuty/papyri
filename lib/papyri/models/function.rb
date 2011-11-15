@@ -4,11 +4,15 @@ module Papyri
   class Function
     attr_reader :name
     attr_reader :description
+    attr_reader :returns
     attr_reader :parameters
 
-    def initialize name, description, params = []
+    def initialize name, description, returns, params = []
       @name = name
       @description = description
+
+      @returns = Papyri::Parameter.new("", returns["description"],
+                                       returns["type"])
 
       @parameters = []
       unless params.nil?

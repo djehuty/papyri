@@ -28,6 +28,8 @@ functions:
 
   - method: append
     description: This function appends the given data...
+    returns: The number of bytes
+    return-type: int
     parameters:
       - type: Stream
         name: data
