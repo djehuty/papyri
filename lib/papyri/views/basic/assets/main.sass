@@ -5,8 +5,14 @@
   -moz-border-radius-#{$side}: $radius
   -webkit-border-#{$side}-radius: $radius
 
+@mixin rounded-corners($radius: 10px)
+  @include rounded(topleft, $radius)
+  @include rounded(topright, $radius)
+  @include rounded(bottomleft, $radius)
+  @include rounded(bottomright, $radius)
+
 body
-  background-color: #ebebeb
+  background-color: #efefef
   font-size: 16px
   font-family: serif, times
   margin:
@@ -51,20 +57,29 @@ li span.name
   background-color: #bbf
   color: #eee
   padding: 3px
-  @include rounded(topleft, 5px)
-  @include rounded(topright, 5px)
-  @include rounded(bottomleft, 5px)
-  @include rounded(bottomright, 5px)
+  padding-left: 9px
+  padding-right: 9px
+  @include rounded-corners(5px)
 
 li .param
   font-size: 1.2em
   margin-left: 20px
+  margin-bottom: 9px
+
+li .param span.name
+  font-size: inherit
+  background-color: #bbb
+  color: #eee
+  padding: 2px
+  padding-left: 6px
+  padding-right: 6px
+  @include rounded-corners(5px)
 
 li .desc
   font-size: 1.2em
   margin-left: 20px
-  margin-top: 6px
-  margin-bottom: 3px
+  margin-top: 12px
+  margin-bottom: 12px
 
 ul
   margin-bottom: 20px

@@ -31,8 +31,8 @@
           .desc #{f.description}
           - f.parameters.each do |p|
             .param
-              %b #{p.name}
-              =": #{p.description}"
+              %span.name #{p.name}
+              #{p.description}
 
     %h2
       %span PROPERTIES
@@ -43,8 +43,8 @@
           .desc #{f.description}
           - f.parameters.each do |p|
             .param
-              %b #{p.name}
-              =": #{p.description}"
+              %span.name #{p.name}
+              #{p.description}
 
     %h2
       %span METHODS
@@ -55,8 +55,8 @@
           .desc #{f.description}
           - f.parameters.each do |p|
             .param
-              %b #{p.name}
-              =": #{p.description}"
+              %span.name #{p.name}
+              #{p.description}
 
     %h2
       %span EVENTS
@@ -67,5 +67,5 @@
           .desc #{f.description}
           - f.parameters.each do |p|
             .param
-              %b #{p.name}
-              =": #{p.description}"
+              %span.name #{p.name}
+              #{p.description}
