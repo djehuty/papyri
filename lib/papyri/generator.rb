@@ -14,8 +14,7 @@ module Papyri
       @destination = destination
     end
 
-    def generate
-      theme = Papyri::Theme.new "basic"
+    def generate theme
       if @source.is_a? Papyri::Class
         class_model = @source
         out = theme.generate_class class_model
