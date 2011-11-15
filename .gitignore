@@ -1,4 +1,6 @@
 *.gem
+.sass-cache
+output
 .bundle
 Gemfile.lock
 pkg/*
