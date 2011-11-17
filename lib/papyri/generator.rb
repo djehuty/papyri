@@ -25,7 +25,7 @@ module Papyri
         project = @source
         out = theme.generate_project project
       else
-        out ""
+        out = ""
       end
 
       File.open(@destination, "wb") do |f|
