@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title #{@module}.#{@name} Documentation
+    %title #{@name} :: #{@module}
     %link{:rel => "stylesheet", :href => path_url("assets/main.css"), :type => "text/css"}
 
   %body
@@ -27,7 +27,7 @@
     %ul
       - @constructors.each do |f|
         %li.function
-          %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " ~> #{f.returns.type}"}
+          %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
           .desc #{f.description}
           - unless f.returns.nil?
             .param
@@ -43,7 +43,7 @@
     %ul
       - @properties.each do |f|
         %li.function
-          %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " ~> #{f.returns.type}"}
+          %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
           .desc #{f.description}
           - unless f.returns.nil?
             .param
@@ -59,7 +59,7 @@
     %ul
       - @methods.each do |f|
         %li.function
-          %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " ~> #{f.returns.type}"}
+          %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
           .desc #{f.description}
           - unless f.returns.nil?
             .param
@@ -75,7 +75,7 @@
     %ul
       - @events.each do |f|
         %li.function
-          %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " ~> #{f.returns.type}"}
+          %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
           .desc #{f.description}
           - unless f.returns.nil?
             .param
