@@ -20,7 +20,7 @@
       %ul
         - @dependencies.each do |d|
           %li
-            %a{:href=>"#"} #{d}
+            %a{:href=>module_path(d)} #{d}
 
     %h2
       %span CONSTRUCTORS

@@ -45,6 +45,12 @@ module Papyri
       ret << path
     end
 
+    def module_path module_string
+      ret = ""
+      path = module_string.gsub(@config.module_delimiter, "/")
+      path_url "#{path}.html"
+    end
+
     private
 
     def load_from_yaml

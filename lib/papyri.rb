@@ -28,7 +28,7 @@ module Papyri
             unless filename == "papyri_config"
               case ext
               when 'yaml', 'yml'
-                cls = Papyri::Class.new(source)
+                cls = Papyri::Class.new(source, {}, conf)
                 mod = cls.module
 
                 # split mod

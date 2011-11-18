@@ -74,4 +74,19 @@ describe Papyri::Class do
       cls.path_url("css/main.css").should eql("../css/main.css")
     end
   end
+
+  describe "#module_path" do
+    it "generates a url based upon the module using a default config parameter" do
+      cls = Papyri::Class.new("test/stream.yaml",
+                              {:model => Papyri::Project.new({}), :filename => "foo.html"})
+      cls.module_path("io/foo").should eql("io/foo.html")
+    end
+
+    it "generates a url based upon the module using the config parameter" do
+      cls = Papyri::Class.new("test/stream.yaml",
+                              {:model => Papyri::Project.new({}), :filename => "foo.html"},
+                              Papyri::Config.new("test/papyri_config.yaml"))
+      cls.module_path("io.foo").should eql("io/foo.html")
+    end
+  end
 end
