@@ -12,6 +12,8 @@ module Papyri
     attr_reader :methods
     attr_reader :events
 
+    attr_reader :description
+
     attr_reader :name
     attr_reader :module
 
@@ -58,6 +60,8 @@ module Papyri
 
       @module = @yaml["module"]
       @name = @yaml["class"]
+
+      @description = @yaml["description"]
 
       @constructors = []
       @properties = []

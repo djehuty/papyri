@@ -29,6 +29,10 @@ describe Papyri::Class do
       @cls.module.should eql("io.stream")
     end
 
+    it "reads the description from the yaml file" do
+      @cls.description.should eql("This class represents a data stream of arbitrary bytes.")
+    end
+
     it "reads the constructors from the yaml file" do
       @cls.constructors.length.should eql(2)
       @cls.constructors[0].description.should eql("This constructor will create an unattached stream.")
