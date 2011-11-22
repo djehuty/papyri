@@ -22,17 +22,39 @@ body
     top: 10px
     bottom: 0px
 
-h1
+.header
+  position: relative
+  height: 2.3em
   border-bottom: 1px solid #000
+
+.header + div
+  padding-top: 1px
+  margin-bottom: 18px
+  border-bottom: 1px solid #333
+  padding-left: 5px
+
+.back-link
+  position: absolute
+  bottom: 0
+  right: 0
+  margin-bottom: 4px
+  font-family: helvetica,arial,freesans,clean,sans-serif
+
+.title
+  position: absolute
+  left: 0
+  bottom: 0
+
+h1
   padding-left: 5px
   font-size: 2em
   font-family: helvetica,arial,freesans,clean,sans-serif
 
-h1 + div
-  padding-top: 1px
-  margin-bottom: 11px
-  border-bottom: 1px solid #333
-  padding-left: 5px
+p
+  margin-left: 15px
+  margin-bottom: 18px
+  font-size: 0.85em
+  font-family: "Helvetica", "Verdana", "Ariel", sans-serif
 
 h1 span.module
   font-size: 0.6em

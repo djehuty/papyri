@@ -5,7 +5,10 @@
     %link{:rel => "stylesheet", :href => path_url("assets/main.css"), :type => "text/css"}
 
   %body
-    %h1 Welcome to the Documentation
+    .header
+      .title
+        %h1 Welcome to the Documentation
+    %div
 
     - if @modules.length > 0
       %h2 MODULES

@@ -5,12 +5,16 @@
     %link{:rel => "stylesheet", :href => path_url("assets/main.css"), :type => "text/css"}
 
   %body
-    - if @parent.is_a? Papyri::Project
-      %a{:href=>@parent_filename, :alt=>"Go Up"}Go to root...
-    - else
-      %a{:href=>@parent_filename, :alt=>"Go Up"}Go to #{@parent.name}...
 
-    %h1 #{@name}
+    .header
+      .back-link
+        - if @parent.is_a? Papyri::Project
+          %a{:href=>@parent_filename, :alt=>"Go Up"}Go to root...
+        - else
+          %a{:href=>@parent_filename, :alt=>"Go Up"}Go to #{@parent.name}...
+      .title
+        %h1 #{@name}
+    %div
 
     - if @modules.length > 0
       %h2 MODULES
