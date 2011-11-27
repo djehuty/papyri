@@ -6,20 +6,22 @@
 
   %body
     .header
-      .title
-        %h1 Welcome to the Documentation
+      .header-content
+        .title
+          %h1 Welcome to the Documentation
     %div
 
-    - if @modules.length > 0
-      %h2 MODULES
-      %ul
-        - @modules.each do |m|
-          %li
-            %a{:href=>m[:filename], :alt=>m[:model].name} #{m[:model].name}
+    .content
+      - if @modules.length > 0
+        %h2 MODULES
+        %ul
+          - @modules.each do |m|
+            %li
+              %a{:href=>m[:filename], :alt=>m[:model].name} #{m[:model].name}
 
-    - if @classes.length > 0
-      %h2 CLASSES
-      %ul
-        - @classes.each do |c|
-          %li
-            %a{:href=>c[:filename], :alt=>c[:model].name} #{c[:model].name}
+      - if @classes.length > 0
+        %h2 CLASSES
+        %ul
+          - @classes.each do |c|
+            %li
+              %a{:href=>c[:filename], :alt=>c[:model].name} #{c[:model].name}

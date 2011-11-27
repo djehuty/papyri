@@ -16,22 +16,30 @@ body
   font-size: 16px
   font-family: serif, times
   color: #333
-  margin:
-    left: 20px
-    right: 30px
-    top: 20px
-    bottom: 0px
-  width: 720px
+  margin: 0px
+
+a[href]
+  color: SteelBlue
+  &:visited
+    color: #205b8e
 
 .header
+  color: #aae
+  background-color: #383838
+  padding-top: 13px
+  padding-right: 30px
+
+.header-content
   position: relative
-  height: 2.3em
-  border-bottom: 1px solid #000
+  height: 2.1em
+  width: 720px
 
 .header + div
   padding-top: 1px
   margin-bottom: 18px
-  border-bottom: 1px solid #333
+  background-color: #aaa
+  border-top: 1px solid #666
+  border-bottom: 1px solid #666
   padding-left: 5px
 
 .back-link
@@ -39,20 +47,33 @@ body
   bottom: 0
   right: 0
   margin-bottom: 4px
+  margin-right: 6px
   font-family: helvetica,arial,freesans,clean,sans-serif
+
+.back-link a
+  color: #aae
+  text-decoration: none
+  &:visited
+    color: #aae
+  &:hover
+    text-decoration: underline
 
 .title
   position: absolute
   left: 0
   bottom: 0
+  padding-left: 7px
 
 h1
   padding-left: 5px
   font-size: 2em
   font-family: helvetica,arial,freesans,clean,sans-serif
 
+.content
+  margin-left: 20px
+  width: 720px
+
 p
-  margin-left: 15px
   margin-bottom: 18px
   font-size: 0.85em
   font-family: "Helvetica", "Verdana", "Ariel", sans-serif
@@ -62,7 +83,6 @@ h1 span.module
   color: #888
 
 h2
-  margin-left: 15px
   margin-bottom: 22px
   font-size: 1.00em
 
@@ -76,7 +96,7 @@ li
   font-family: "Helvetica", "Verdana", "Ariel", sans-serif
   font-size: 0.7em
   list-style: square
-  margin-left: 35px
+  margin-left: 20px
   margin-top: 3px
 
 li a
@@ -93,7 +113,7 @@ li span.name
 
 li .param
   font-size: 1.2em
-  margin-left: 20px
+  margin-left: 12px
   margin-bottom: 9px
 
 li .param span
@@ -115,7 +135,7 @@ li .param span.returns
 
 li .desc
   font-size: 1.2em
-  margin-left: 20px
+  margin-left: 12px
   margin-top: 12px
   margin-bottom: 12px
 
@@ -125,10 +145,6 @@ ul
 li.function
   list-style: none
   margin-bottom: 22px
-  margin-left: 20px
+  margin-left: 5px
   padding-left: 1em
 
-a[href]
-  color: SteelBlue
-  &:visited
-    color: #205b8e

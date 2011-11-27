@@ -7,25 +7,27 @@
   %body
 
     .header
-      .back-link
-        - if @parent.is_a? Papyri::Project
-          %a{:href=>@parent_filename, :alt=>"Go Up"}Go to root...
-        - else
-          %a{:href=>@parent_filename, :alt=>"Go Up"}Go to #{@parent.name}...
-      .title
-        %h1 #{@name}
+      .header-content
+        .back-link
+          - if @parent.is_a? Papyri::Project
+            %a{:href=>@parent_filename, :alt=>"Go Up"}="&#x2196;"
+          - else
+            %a{:href=>@parent_filename, :alt=>"Go Up"}="#{@parent.name} &#x2196;"
+        .title
+          %h1 #{@name}
     %div
 
-    - if @modules.length > 0
-      %h2 MODULES
-      %ul
-        - @modules.each do |m|
-          %li
-            %a{:href=>path_url(m[:filename]), :alt=>m[:model].name} #{m[:model].name}
+    .content
+      - if @modules.length > 0
+        %h2 MODULES
+        %ul
+          - @modules.each do |m|
+            %li
+              %a{:href=>path_url(m[:filename]), :alt=>m[:model].name} #{m[:model].name}
 
-    - if @classes.length > 0
-      %h2 CLASSES
-      %ul
-        - @classes.each do |c|
-          %li
-            %a{:href=>path_url(c[:filename]), :alt=>c[:model].name} #{c[:model].name}
+      - if @classes.length > 0
+        %h2 CLASSES
+        %ul
+          - @classes.each do |c|
+            %li
+              %a{:href=>path_url(c[:filename]), :alt=>c[:model].name} #{c[:model].name}

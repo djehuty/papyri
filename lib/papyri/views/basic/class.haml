@@ -7,87 +7,90 @@
   %body
 
     .header
-      .back-link
-        - if @parent.is_a? Papyri::Project
-          %a{:href=>@parent_filename, :alt=>"Go Up"}Go to root...
-        - else
-          %a{:href=>@parent_filename, :alt=>"Go Up"}Go to #{@parent.name}...
-      .title
-        %h1
-          #{@name}
-          %span.module #{@module}
+      .header-content
+        .back-link
+          - if @parent.is_a? Papyri::Project
+            %a{:href=>@parent_filename, :alt=>"Go Up"}="&#x2196;"
+          - else
+            %a{:href=>@parent_filename, :alt=>"Go Up"}="#{@parent.name} &#x2196;"
+        .title
+          %h1
+            #{@name}
+            %span.module #{@module}
     %div
 
-    %p #{@description}
 
-    - if @dependencies.length > 0
+    .content
+      %p #{@description}
+
+      - if @dependencies.length > 0
+        %h2
+          %span DEPENDENCIES
+        %ul
+          - @dependencies.each do |d|
+            %li
+              %a{:href=>module_path(d)} #{d}
+
       %h2
-        %span DEPENDENCIES
+        %span CONSTRUCTORS
       %ul
-        - @dependencies.each do |d|
-          %li
-            %a{:href=>module_path(d)} #{d}
+        - @constructors.each do |f|
+          %li.function
+            %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
+            .desc #{f.description}
+            - unless f.returns.nil?
+              .param
+                %span.returns returns
+                #{f.returns.description}
+            - f.parameters.each do |p|
+              .param
+                %span.name #{p.name}
+                #{p.description}
 
-    %h2
-      %span CONSTRUCTORS
-    %ul
-      - @constructors.each do |f|
-        %li.function
-          %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
-          .desc #{f.description}
-          - unless f.returns.nil?
-            .param
-              %span.returns returns
-              #{f.returns.description}
-          - f.parameters.each do |p|
-            .param
-              %span.name #{p.name}
-              #{p.description}
+      %h2
+        %span PROPERTIES
+      %ul
+        - @properties.each do |f|
+          %li.function
+            %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
+            .desc #{f.description}
+            - unless f.returns.nil?
+              .param
+                %span.returns returns
+                #{f.returns.description}
+            - f.parameters.each do |p|
+              .param
+                %span.name #{p.name}
+                #{p.description}
 
-    %h2
-      %span PROPERTIES
-    %ul
-      - @properties.each do |f|
-        %li.function
-          %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
-          .desc #{f.description}
-          - unless f.returns.nil?
-            .param
-              %span.returns returns
-              #{f.returns.description}
-          - f.parameters.each do |p|
-            .param
-              %span.name #{p.name}
-              #{p.description}
+      %h2
+        %span METHODS
+      %ul
+        - @methods.each do |f|
+          %li.function
+            %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
+            .desc #{f.description}
+            - unless f.returns.nil?
+              .param
+                %span.returns returns
+                #{f.returns.description}
+            - f.parameters.each do |p|
+              .param
+                %span.name #{p.name}
+                #{p.description}
 
-    %h2
-      %span METHODS
-    %ul
-      - @methods.each do |f|
-        %li.function
-          %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
-          .desc #{f.description}
-          - unless f.returns.nil?
-            .param
-              %span.returns returns
-              #{f.returns.description}
-          - f.parameters.each do |p|
-            .param
-              %span.name #{p.name}
-              #{p.description}
-
-    %h2
-      %span EVENTS
-    %ul
-      - @events.each do |f|
-        %li.function
-          %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
-          .desc #{f.description}
-          - unless f.returns.nil?
-            .param
-              %span.returns returns
-              #{f.returns.description}
-          - f.parameters.each do |p|
-            .param
-              %span.name #{p.name}
-              #{p.description}
+      %h2
+        %span EVENTS
+      %ul
+        - @events.each do |f|
+          %li.function
+            %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
+            .desc #{f.description}
+            - unless f.returns.nil?
+              .param
+                %span.returns returns
+                #{f.returns.description}
+            - f.parameters.each do |p|
+              .param
+                %span.name #{p.name}
+                #{p.description}
