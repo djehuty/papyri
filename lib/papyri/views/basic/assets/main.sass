@@ -17,6 +17,7 @@ body
   font-family: serif, times
   color: #333
   margin: 0px
+  background-image: url('background.png')
 
 a[href]
   color: SteelBlue
@@ -24,35 +25,34 @@ a[href]
     color: #205b8e
 
 .header
-  color: #aae
-  background-color: #383838
-  padding-top: 13px
+  color: #ddd
+  background-color: #666
   padding-right: 30px
 
 .header-content
   position: relative
-  height: 2.1em
-  width: 720px
+  height: 47px
+  width: 880px
 
 .header + div
   padding-top: 1px
   margin-bottom: 18px
   background-color: #aaa
-  border-top: 1px solid #666
-  border-bottom: 1px solid #666
   padding-left: 5px
+  box-shadow: 0px -1px 2px #222
 
 .back-link
   position: absolute
   bottom: 0
   right: 0
-  margin-bottom: 4px
+  margin-bottom: 8px
   margin-right: 6px
   font-family: helvetica,arial,freesans,clean,sans-serif
 
 .back-link a
   color: #aae
   text-decoration: none
+  text-shadow: 1px 1px 1px #333333
   &:visited
     color: #aae
   &:hover
@@ -65,32 +65,42 @@ a[href]
   padding-left: 7px
 
 h1
-  padding-left: 5px
+  text-shadow: 1px 1px 2px #333
+  padding-left: 6px
+  padding-bottom: 3px
   font-size: 2em
-  font-family: helvetica,arial,freesans,clean,sans-serif
+  font-family: "Cantata One", helvetica,arial,freesans,clean,sans-serif
+  font-weight: 400
 
 .content
   margin-left: 20px
-  width: 720px
+  width: 880px
+
+.content > p
+  list-style: none
+  padding-left: 8px
+  padding-top: 5px
+  padding-bottom: 5px
+  background-color: #e8e8e8
+  border: 1px solid #bbb
+  @include rounded-corners(5px)
 
 p
   margin-bottom: 18px
   font-size: 0.85em
-  font-family: "Helvetica", "Verdana", "Ariel", sans-serif
+  font-family: "Voces", "Helvetica", "Verdana", "Ariel", sans-serif
 
 h1 span.module
   font-size: 0.6em
-  color: #888
+  color: #aaa
 
 h2
-  margin-bottom: 22px
-  font-size: 1.00em
-
-h2 span
-  border-bottom: 1px solid #000
-
-h2:first-letter
-  font-size: 1.25em
+  margin-top: 24px
+  margin-bottom: 8px
+  font-size: 1.1em
+  font-family: 'Maven Pro', sans-serif
+  font-weight: 500
+  text-shadow: 0 0 10px #f8f8f8
 
 li
   font-family: "Helvetica", "Verdana", "Ariel", sans-serif
@@ -104,11 +114,13 @@ li a
 
 li span.name
   font-size: 1.3em
-  background-color: #aae
-  color: #eee
+  background-color: #d8d8ff
+  border: solid 1px #c8c8ef
+  color: #3b3b6b
   padding: 3px
   padding-left: 9px
   padding-right: 9px
+  font-family: "Maven Pro", sans-serif
   @include rounded-corners(5px)
 
 li .param
@@ -117,12 +129,15 @@ li .param
   margin-bottom: 9px
 
 li .param span
-  font-size: inherit
+  font-size: 1em
+  font-family: "Maven Pro", sans-serif
   background-color: #bbb
+  background-image: none
   color: #eee
   padding: 2px
   padding-left: 6px
   padding-right: 6px
+  border: none
   @include rounded-corners(5px)
 
 li .param span.name
@@ -144,7 +159,11 @@ ul
 
 li.function
   list-style: none
-  margin-bottom: 22px
-  margin-left: 5px
-  padding-left: 1em
-
+  margin-bottom: 9px
+  margin-left: 8px
+  padding-left: 7px
+  padding-top: 10px
+  padding-bottom: 5px
+  background-color: #e8e8e8
+  border: 1px solid #bbb
+  @include rounded-corners(10px)

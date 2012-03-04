@@ -3,6 +3,9 @@
   %head
     %title Project - Documentation
     %link{:rel => "stylesheet", :href => path_url("assets/main.css"), :type => "text/css"}
+    %link{:rel => "stylesheet", :href => 'http://fonts.googleapis.com/css?family=Maven+Pro:500', :type => 'text/css'}
+    %link{:rel => "stylesheet", :href => 'http://fonts.googleapis.com/css?family=Voces', :type => 'text/css'}
+    %link{:rel => "stylesheet", :href => 'http://fonts.googleapis.com/css?family=Cantata+One', :type => 'text/css'}
 
   %body
     .header
@@ -13,14 +16,14 @@
 
     .content
       - if @modules.length > 0
-        %h2 MODULES
+        %h2 Modules
         %ul
           - @modules.each do |m|
             %li
               %a{:href=>m[:filename], :alt=>m[:model].name} #{m[:model].name}
 
       - if @classes.length > 0
-        %h2 CLASSES
+        %h2 Classes
         %ul
           - @classes.each do |c|
             %li

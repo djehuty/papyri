@@ -3,6 +3,10 @@
   %head
     %title #{@name} :: #{@module}
     %link{:rel => "stylesheet", :href => path_url("assets/main.css"), :type => "text/css"}
+    %link{:rel => "stylesheet", :href => 'http://fonts.googleapis.com/css?family=Maven+Pro:500', :type => 'text/css'}
+    %link{:rel => "stylesheet", :href => 'http://fonts.googleapis.com/css?family=Voces', :type => 'text/css'}
+    %link{:rel => "stylesheet", :href => 'http://fonts.googleapis.com/css?family=Cantata+One', :type => 'text/css'}
+    %link{:rel => "stylesheet", :href => 'http://fonts.googleapis.com/css?family=Carme', :type => 'text/css'}
 
   %body
 
@@ -25,72 +29,76 @@
 
       - if @dependencies.length > 0
         %h2
-          %span DEPENDENCIES
+          %span Dependencies
         %ul
           - @dependencies.each do |d|
             %li
               %a{:href=>module_path(d)} #{d}
 
-      %h2
-        %span CONSTRUCTORS
-      %ul
-        - @constructors.each do |f|
-          %li.function
-            %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
-            .desc #{f.description}
-            - unless f.returns.nil?
-              .param
-                %span.returns returns
-                #{f.returns.description}
-            - f.parameters.each do |p|
-              .param
-                %span.name #{p.name}
-                #{p.description}
+      - if @constructors.length > 0
+        %h2
+          %span Constructors
+        %ul
+          - @constructors.each do |f|
+            %li.function
+              %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
+              %p.desc #{f.description}
+              - unless f.returns.nil?
+                %p.param
+                  %span.returns returns
+                  #{f.returns.description}
+              - f.parameters.each do |p|
+                %p.param
+                  %span.name #{p.name}
+                  #{p.description}
 
-      %h2
-        %span PROPERTIES
-      %ul
-        - @properties.each do |f|
-          %li.function
-            %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
-            .desc #{f.description}
-            - unless f.returns.nil?
-              .param
-                %span.returns returns
-                #{f.returns.description}
-            - f.parameters.each do |p|
-              .param
-                %span.name #{p.name}
-                #{p.description}
+      - if @properties.length > 0
+        %h2
+          %span Properties
+        %ul
+          - @properties.each do |f|
+            %li.function
+              %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
+              %p.desc #{f.description}
+              - unless f.returns.nil?
+                %p.param
+                  %span.returns returns
+                  #{f.returns.description}
+              - f.parameters.each do |p|
+                %p.param
+                  %span.name #{p.name}
+                  #{p.description}
 
-      %h2
-        %span METHODS
-      %ul
-        - @methods.each do |f|
-          %li.function
-            %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
-            .desc #{f.description}
-            - unless f.returns.nil?
-              .param
-                %span.returns returns
-                #{f.returns.description}
-            - f.parameters.each do |p|
-              .param
-                %span.name #{p.name}
-                #{p.description}
+      - if @methods.length > 0
+        %h2
+          %span Methods
+        %ul
+          - @methods.each do |f|
+            %li.function
+              %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
+              %p.desc #{f.description}
+              - unless f.returns.nil?
+                %p.param
+                  %span.returns returns
+                  #{f.returns.description}
+              - f.parameters.each do |p|
+                %p.param
+                  %span.name #{p.name}
+                  #{p.description}
 
-      %h2
-        %span EVENTS
-      %ul
-        - @events.each do |f|
-          %li.function
-            %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
-            .desc #{f.description}
-            - unless f.returns.nil?
-              .param
-                %span.returns returns
-                #{f.returns.description}
-            - f.parameters.each do |p|
-              .param
-                %span.name #{p.name}
-                #{p.description}
+      - if @events.length > 0
+        %h2
+          %span Events
+        %ul
+          - @events.each do |f|
+            %li.function
+              %span.name #{f}#{(f.returns.nil? || f.returns.type.nil?) ? "" : " :: #{f.returns.type}"}
+              %p.desc #{f.description}
+              - unless f.returns.nil?
+                %p.param
+                  %span.returns returns
+                  #{f.returns.description}
+              - f.parameters.each do |p|
+                %p.param
+                  %span.name #{p.name}
+                  #{p.description}

@@ -121,7 +121,7 @@ module Papyri
               File.open("#{dest_path}/#{filename}.css", "w") do |f|
                 f.write output
               end
-            when 'js', 'css'
+            else
               FileUtils.cp full_path, "#{dest_path}/#{f}"
             end
           end
