@@ -1,0 +1,119 @@
+module: geometry.rectangle
+dependencies: 
+  - geometry.circle
+  - geometry.point
+  - geometry.line
+class: Rectangle
+description: "Represents a quadrilateral polygon where each internal angle is 90 degrees."
+functions:
+  - constructor: "Constructs a new rectangle as a unit square at the origin with a size of 1 unit by 1 unit."
+    parameters:
+  - constructor: "Constructs a new rectangle with the given center point and the given dimensions."
+    parameters:
+    - type: double
+      name: x
+    - type: double
+      name: y
+    - type: double
+      name: width
+    - type: double
+      name: height
+  - property: x
+    description: "The center point's x coordinate."
+    return-type: double
+    parameters:
+  - property: y
+    description: "The center point's y coordinate."
+    return-type: double
+    parameters:
+  - property: width
+    description: "The width of the rectangle."
+    return-type: double
+    parameters:
+  - property: height
+    description: "The height of the rectangle."
+    return-type: double
+    parameters:
+  - method: intersects
+    description: "Determines whether or not the given Rectangle intersects this one."
+    returns: true when Rectangle b intersects.
+    return-type: bool
+    parameters:
+    - type: Rectangle
+      name: b
+  - method: intersects
+    description: "Determines whether or not the given Circle intersects this rectangle."
+    returns: true when Circle b intersects.
+    return-type: bool
+    parameters:
+    - type: Circle
+      name: b
+  - method: intersects
+    description: "Determines whether or not the given Line intersects this rectangle."
+    returns: true when Line b intersects.
+    return-type: bool
+    parameters:
+    - type: Line
+      name: b
+  - method: intersects
+    description: "Determines whether or not the given Point is on the boundary of the rectangle."
+    returns: true when Point b is on an edge of the rectangle.
+    return-type: bool
+    parameters:
+    - type: Point
+      name: b
+  - method: contains
+    description: "Determines whether or not the given Rectangle is contained within the rectangle. rectangle."
+    returns: true when Rectangle b is within or touching the bounds of the
+    return-type: bool
+    parameters:
+    - type: Rectangle
+      name: b
+  - method: contains
+    description: "Determines whether or not the given Circle is contained within the rectangle. rectangle."
+    returns: true when Circle b is within or touching the bounds of the
+    return-type: bool
+    parameters:
+    - type: Circle
+      name: b
+  - method: contains
+    description: "Determines whether or not the given Line is contained within the rectangle. rectangle."
+    returns: true when Line b is within or touching the bounds of the
+    return-type: bool
+    parameters:
+    - type: Line
+      name: b
+  - method: contains
+    description: "Determines whether or not the given Point is inside this rectangle. rectangle."
+    returns: true when Point b is within or touching the bounds of the
+    return-type: bool
+    parameters:
+    - type: Point
+      name: b
+  - method: clip
+    description: "Computes the shape that would result from the given Line being clipped by this rectangle."
+    returns: The number of intersection points.
+    return-type: int
+    parameters:
+    - type: Line
+      name: b
+    - type: Point
+      name: points
+  - method: clip
+    description: "Computes the shape that would result from the given Rectangle being clipped by this rectangle."
+    returns: The number of intersection points.
+    return-type: int
+    parameters:
+    - type: Rectangle
+      name: b
+    - type: Point
+      name: points
+  - method: clip
+    description: "Computes the shape that would result from the given Circle being clipped by this rectangle."
+    returns: The number of intersection points.
+    return-type: int
+    parameters:
+    - type: Circle
+      name: b
+    - type: Point
+      name: points

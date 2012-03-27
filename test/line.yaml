@@ -1,0 +1,44 @@
+module: geometry.line
+dependencies: 
+  - geometry.rectangle
+  - geometry.circle
+  - geometry.point
+class: Line
+description: "Represents a line segment in two-dimensional space represented by two end points."
+functions:
+  - constructor: "This contructs a line of zero magnitude that begins and ends at the origin."
+    parameters:
+  - constructor: "This constructs a line that begins at the given Point and ends at the given Point."
+    parameters:
+    - type: Point
+      name: a
+      description: "The start point."
+    - type: Point
+      name: b
+      description: "The end point."
+  - constructor: "This constructs a line that begins and ends at the given points. the end point."
+    parameters:
+    - type: Point
+      name: points
+      description: "The first element gives the start point and the last element gives"
+  - property: start
+    description: "The starting point for the line."
+    return-type: Point
+    parameters:
+  - property: end
+    description: "The ending point for the line."
+    return-type: Point
+    parameters:
+  - method: magnitude
+    description: "Computes the length of the line."
+    returns: The length of the line.
+    return-type: double
+    parameters:
+  - method: on
+    description: "Determines whether or not the given point is on this line."
+    returns: true when the point is at the endpoints or is on the line.
+    return-type: bool
+    parameters:
+    - type: Point
+      name: b
+      description: "The point to use."
