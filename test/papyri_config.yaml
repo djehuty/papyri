@@ -1,4 +1,7 @@
+# D language configuration
+
 language: D
 module_delimiter: .
 constructor_name: this
-function_format: "%n(%t %p, %t %p)"
+function_format: "%f(%t %p, %t %p)"
+static_function_format: "static %f(%t %p, %t %p)"
