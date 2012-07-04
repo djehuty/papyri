@@ -8,7 +8,6 @@ require 'papyri/models/theme'
 module Papyri
   class Generator
     def initialize object, destination
-      puts
       puts "Generating #{destination}"
       @source = object
       @destination = destination
