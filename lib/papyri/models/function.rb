@@ -7,7 +7,10 @@ module Papyri
     attr_reader :returns
     attr_reader :parameters
 
-    def initialize name, description, returns = nil, params = []
+    def initialize name, description, returns = nil, params = [], config=nil, format = nil
+      @format = format || ""
+      @params = params || []
+
       @name = name
       @description = description
 
@@ -24,24 +27,11 @@ module Papyri
                                                p["type"])
         end
       end
+      @config = config
     end
 
     def to_s
-      ret = "#{@name} ( "
-
-      @parameters.each do |p|
-        ret << "#{p.type} " unless p.type.nil?
-        ret << "#{p.name}, "
-      end
-
-      if ret.end_with? ", "
-        ret = ret[0..-3]
-        ret << " "
-      end
-
-      ret << ")"
-
-      ret
+      @config.parse_format_string(@format, nil, @name, @params)
     end
   end
 end

@@ -32,6 +32,7 @@ module Papyri
         config = Papyri::Config.new
       end
       @config = config
+      @format = @config.parse_format_string(@config.function_format, @name)
 
       load_from_yaml
     end
@@ -82,25 +83,33 @@ module Papyri
             f = Papyri::Function.new function["property"], 
                                      function["description"],
                                      {},
-                                     function["parameters"]
+                                     function["parameters"],
+                                     @config,
+                                     @format
             @properties << f
           elsif function["method"]
             f = Papyri::Function.new function["method"], 
                                      function["description"],
                                      {"description"=>function["returns"], "type"=>function["return-type"]},
-                                     function["parameters"]
+                                     function["parameters"],
+                                     @config,
+                                     @format
             @methods << f
           elsif function["event"]
             f = Papyri::Function.new function["event"], 
                                      function["description"],
                                      {"description"=>function["returns"], "type"=>function["return-type"]},
-                                     function["parameters"]
+                                     function["parameters"],
+                                     @config,
+                                     @format
             @events << f
           elsif function["constructor"]
             f = Papyri::Function.new @config.constructor_name, 
                                      function["constructor"],
                                      {},
-                                     function["parameters"]
+                                     function["parameters"],
+                                     @config,
+                                     @format
             @constructors << f
           end
         end
