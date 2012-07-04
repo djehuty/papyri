@@ -13,14 +13,42 @@ module Papyri
       @classes = []
       @files = []
       @modules = []
-      theme = Papyri::Theme.new "basic"
 
-      conf = Papyri::Config.new "#{source_path}/papyri_config.yaml"
-      project = Papyri::Project.new
+      @theme = Papyri::Theme.new "basic"
+      @config = Papyri::Config.new "#{source_path}/papyri_config.yaml"
+      @project = Papyri::Project.new
 
+      generate_path source_path, dest_path
+
+      @modules.each do |m|
+        dest = m[:filename]
+        dest = "#{dest_path}/#{dest[2..-1]}"
+        new_path = dest[0..dest.rindex('.')-1]
+        FileUtils.mkdir_p new_path
+        Papyri::Generator.new(m[:model], dest).generate @theme
+      end
+
+      @classes.each do |c|
+        dest = c[:filename]
+        dest = "#{dest_path}/#{dest[2..-1]}"
+        Papyri::Generator.new(c[:model], dest).generate @theme
+      end
+
+      dest = dest_path + "/project.html"
+      Papyri::Generator.new(@project, dest).generate @theme
+
+      # Compile assets
+      generate_assets_path @theme.path, dest_path
+    end
+
+    private
+
+    def generate_path source_path, dest_path
       Dir.new(source_path).each do |f|
         source = "#{source_path}/#{f}"
-        if f[0] != '.' and not File.directory?(source)
+        if File.directory?(source) and f[0] != '.'
+          generate_path source, dest_path
+        elsif f[0] != '.' and not File.directory?(source)
           unless f.rindex('.').nil?
             ext = f[f.rindex('.')+1..-1]
             filename = f[0..f.rindex('.')-1]
@@ -28,12 +56,12 @@ module Papyri
             unless filename == "papyri_config"
               case ext
               when 'yaml', 'yml'
-                cls = Papyri::Class.new(source, {}, conf)
+                cls = Papyri::Class.new(source, {}, @config)
                 mod = cls.module
 
                 # split mod
-                mods = mod.split(conf.module_delimiter)
-                cur_mod = project
+                mods = mod.split(@config.module_delimiter)
+                cur_mod = @project
                 cur_fn = "project.html"
 
                 mods[0..-2].each do |m|
@@ -66,7 +94,9 @@ module Papyri
                 dest << "/#{filename}.html"
 
                 cls.parent = cur_mod
-                cls.parent_filename = "../#{cur_fn[cur_fn.rindex("/")+1..-1]}"
+                unless cur_fn.rindex("/").nil?
+                  cls.parent_filename = "../#{cur_fn[cur_fn.rindex("/")+1..-1]}"
+                end
                 @classes << {:model=>cls, :filename=>dest}
                 cur_mod.add({:model=>cls, :filename=>dest})
 
@@ -76,33 +106,8 @@ module Papyri
           end
         end
       end
-
-      @modules.each do |m|
-        dest = m[:filename]
-        dest = "#{dest_path}/#{dest[2..-1]}"
-        new_path = dest[0..dest.rindex('.')-1]
-        FileUtils.mkdir_p new_path
-        Papyri::Generator.new(m[:model], dest).generate theme
-      end
-
-      @classes.each do |c|
-        dest = c[:filename]
-        dest = "#{dest_path}/#{dest[2..-1]}"
-        Papyri::Generator.new(c[:model], dest).generate theme
-      end
-
-      dest = dest_path + "/project.html"
-      Papyri::Generator.new(project, dest).generate theme
-
-      # Compile assets
-      generate_assets_path theme.path, dest_path
     end
 
-    private
-
-    def generate_path source_path, dest_path
-    end
-    
     def generate_assets_path source_path, dest_path
       Dir.new(source_path).each do |f|
         full_path = "#{source_path}/#{f}"
